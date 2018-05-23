@@ -1,0 +1,33 @@
+AppBundle\Entity\Pagina:
+    pagina:
+        titulo: <sentence()>
+        contenido: <text()>
+AppBundle\Entity\Tag:
+    tag_{0..10}:
+        tag: <word()>
+AppBundle\Entity\Slider:
+    slider_{0..10}:
+        titulo: <sentence()>
+        contenido: <sentence()>
+        tipo: <randomElement(['video','image'])>
+        url: <url()>
+        overlay: <boolean(85)>
+        textColor: <hexcolor()>
+        textAlign: <randomElement(['left','center','right'])>
+AppBundle\Entity\Equipo:
+    equipo_{0..30}:
+        nombre: <firstName()>
+        apellidos: <lastName()>
+        descripcion: <sentence()>
+        img: 'no-image.jpg'
+        email: <email()>
+        facebook: <userName()>
+        instagram: <userName()>
+        twitter: <userName()>
+        youtube: <userName()>
+        tipo: <randomElement(['fundador','socio'])>
+AppBundle\Entity\Proyecto:
+    proyecto_{0..10}:
+        nombre: <sentence()>
+        img: 'no-image.jpg'
+        url: '<iframe></iframe>'

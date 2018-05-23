@@ -1,0 +1,51 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %} SLIDER - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    {% include 'blocks/admin/header.html.twig' with {
+        'title': 'Slider',
+        'addPath': path('slider_new')
+        }
+    %}
+
+    <section class="features17 cid-qNub0944hF" id="features17-n">
+        <div class="container">
+            <div class="row media-row">
+                {% for slider in pagination %}
+                    <div class="card p-3 col-md-3">
+                        <div class="card-wrapper">
+                            <div class="card-img">
+                                <a href="{{ path('slider_edit', {'id': slider.id}) }}">
+                                    {% if slider.tipo == 'image' %}
+                                        <img src="{{ asset(slider_img_route ~ slider.url) }}" alt="{{ slider.titulo }}">
+                                    {% else %}
+                                        <img src="{{ asset(slider_img_route ~ 'no-image.jpg') }}"
+                                             alt="{{ slider.titulo }}">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="card-box">
+                                <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                                    {{ slider.titulo }}
+                                </h4>
+                                <p class="mbr-text mbr-fonts-style display-7">
+                                    {{ slider.contenido }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="navigation d-flex justify-content-center mt-4">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets_admin/dropdown/js/script.min.js') }}"></script>
+{% endblock %}

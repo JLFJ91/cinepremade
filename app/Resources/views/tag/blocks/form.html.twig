@@ -1,0 +1,31 @@
+{% extends 'base_admin.html.twig' %}
+{% block body %}
+
+    {% if type == 'edit' %}
+        {% include 'blocks/admin/header.html.twig' with {
+            'title': 'Editar "' ~ tag.tag ~ '"',
+            'addPath': path('tags_new', {'id': tag.id}),
+            'deletePath': path('tags_delete', {'id': tag.id})
+            }
+        %}
+    {% else %}
+        {% include 'blocks/admin/header.html.twig' with {
+            'title': 'Nuevo Tag',
+            'returnPath': path('admin_tags_index')
+            }
+        %}
+    {% endif %}
+
+    <div class="container pl-4 pt-4 pb-5">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <div class="text-center">
+            {% if type == 'edit' %}
+                <input type="submit" class="btn btn-primary" value="Editar" />
+            {% else %}
+                <input type="submit" class="btn btn-primary" value="Nuevo" />
+            {% endif %}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

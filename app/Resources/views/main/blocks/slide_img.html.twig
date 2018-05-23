@@ -1,0 +1,21 @@
+<div class="carousel-item slider-fullscreen-image {% if id == 0 %} active {% endif %}" data-bg-video-slide="false"
+     style="background-image: url({{ asset(slider_img_route ~ slide.url) }});">
+    <div class="container container-slide">
+        <div class="image_wrapper">
+            {% if slide.overlay %}
+                <div class="mbr-overlay"></div>
+            {% endif %}
+            <img src="{{ asset(slider_img_route ~ slide.url) }}">
+            <div class="carousel-caption justify-content-center">
+                <div class="col-10 text-{{ slide.textAlign }}">
+                    <h2 class="mbr-fonts-style display-1" {% if slide.textColor %} style="color: {{ slide.textColor }} " {% endif %}>
+                        {{ slide.titulo }}
+                    </h2>
+                    <p class="lead mbr-text mbr-fonts-style display-5" {% if slide.textColor %} style="color: {{ slide.textColor }} " {% endif %}>
+                        {{ slide.contenido }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

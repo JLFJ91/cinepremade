@@ -1,0 +1,57 @@
+{% extends 'base_admin.html.twig' %}
+{% block body %}
+
+    {% if type == 'edit' %}
+        {% include 'blocks/admin/header.html.twig' with {
+            'title': 'Editar "' ~ equipo.nombre ~ ' ' ~ equipo.apellidos ~ '"',
+            'addPath': path('equipo_new', {'id': equipo.id}),
+            'deletePath': path('equipo_delete', {'id': equipo.id})
+            }
+        %}
+    {% else %}
+        {% include 'blocks/admin/header.html.twig' with {
+            'title': 'Nuevo Fundador/Socio',
+            'returnPath': path('admin_equipo_index')
+            }
+        %}
+    {% endif %}
+
+    <div class="container pl-4 pt-4 pb-5">
+        {{ form_start(form) }}
+        <div class="row media-row">
+            <div class="col-4">
+                {{ form_row(form.nombre) }}
+            </div>
+            <div class="col-4">
+                {{ form_row(form.apellidos) }}
+            </div>
+            <div class="col-4">
+                {{ form_row(form.email) }}
+            </div>
+            <div class="col-3">
+                {{ form_row(form.facebook) }}
+            </div>
+            <div class="col-3">
+                {{ form_row(form.instagram) }}
+            </div>
+            <div class="col-3">
+                {{ form_row(form.twitter) }}
+            </div>
+            <div class="col-3">
+                {{ form_row(form.youtube) }}
+            </div>
+            <div class="col-12">
+                {{ form_row(form.descripcion) }}
+            </div>
+        </div>
+        {{ form_widget(form) }}
+        <div class="text-center">
+            {% if type == 'edit' %}
+                <input type="submit" class="btn btn-primary" value="Editar" />
+            {% else %}
+                <input type="submit" class="btn btn-primary" value="Nuevo" />
+            {% endif %}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}TAGS - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/datatables/data-tables.bootstrap4.min.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {% include 'blocks/admin/header.html.twig' with {
+        'title': 'Tags',
+        'addPath': path('tags_new')
+        }
+    %}
+
+    <section class="section-table cid-qN6ZXrad2L" id="table1-1">
+        <div class="container container-table">
+            <div class="table-wrapper">
+                <div class="container scroll">
+                    <table class="table" cellspacing="0">
+                        <thead>
+                        <tr class="table-heads">
+                            <th class="head-item mbr-fonts-style display-7">
+                                Tag
+                            </th>
+                            <th class="head-item mbr-fonts-style display-7">
+                                Acciones
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for tag in tags %}
+                            <tr>
+                                <td class="body-item mbr-fonts-style display-7">
+                                    {{ tag.tag }}
+                                </td>
+                                <td class="body-item mbr-fonts-style display-7">
+                                    <a href="{{ path('tags_edit', { 'id': tag.id }) }}" title="Editar">
+                                        <span class="mbri-edit2 mbr-iconfont mbr-iconfont-btn"></span>
+                                    </a>
+                                    <a href="{{ path('tags_delete', { 'id': tag.id }) }}" title="Eliminar">
+                                        <span class="mbri-trash mbr-iconfont mbr-iconfont-btn"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets_admin/dropdown/js/script.min.js') }}"></script>
+    <script src="{{ asset('assets_admin/datatables/jquery.data-tables.min.js') }}"></script>
+    <script src="{{ asset('assets_admin/datatables/data-tables.bootstrap4.min.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="description" content="">
+    <title>{% block title %}PREMADE {% endblock %}</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/tether/tether.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap-grid.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap-reboot.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dropdown/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/socicon/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/theme/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
+
+
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+    {% include 'blocks/user/navbar.html.twig' %}
+    {% block body %}{% endblock %}
+    {% include 'blocks/user/footer.html.twig' %}
+
+    <script src="{{ asset('assets/web/assets/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/popper/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/tether/tether.min.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/smoothscroll/smooth-scroll.js') }}"></script>
+    <script src="{{ asset('assets/dropdown/js/script.min.js') }}"></script>
+    <script src="{{ asset('assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
+    {% block javascripts %}{% endblock %}
+    <script src="{{ asset('assets/theme/js/script.js') }}"></script>
+</body>
+</html>

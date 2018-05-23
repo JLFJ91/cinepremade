@@ -1,0 +1,31 @@
+{% extends 'base_admin.html.twig' %}
+{% block body %}
+
+    {% if type == 'edit' %}
+        {% include 'blocks/admin/header.html.twig' with {
+            'title': 'Editar "' ~ pagina.titulo ~ '"',
+            'addPath': path('paginas_new', {'id': pagina.id}),
+            'deletePath': path('paginas_delete', {'id': pagina.id})
+            }
+        %}
+    {% else %}
+        {% include 'blocks/admin/header.html.twig' with {
+            'title': 'Nueva Página',
+            'returnPath': path('admin_paginas_index')
+            }
+        %}
+    {% endif %}
+
+    <div class="container pl-4 pt-4 pb-5">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <div class="text-center">
+            {% if type == 'edit' %}
+                <input type="submit" class="btn btn-primary" value="Editar" />
+            {% else %}
+                <input type="submit" class="btn btn-primary" value="Nueva" />
+            {% endif %}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

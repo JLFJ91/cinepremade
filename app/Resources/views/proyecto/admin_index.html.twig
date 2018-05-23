@@ -1,0 +1,44 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}PROYECTOS - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    {% include 'blocks/admin/header.html.twig' with {
+        'title': 'Proyectos',
+        'addPath': path('proyectos_new')
+        }
+    %}
+
+    <section class="features17 cid-qNub0944hF" id="features17-n">
+        <div class="container">
+            <div class="row media-row">
+                {% for proyecto in pagination %}
+                    <div class="card p-3 col-md-3">
+                        <div class="card-wrapper">
+                            <div class="card-img">
+                                <a href="{{ path('proyectos_edit', {'id': proyecto.id}) }}">
+                                    <img src="https://img.youtube.com/vi/{{ proyecto.url }}/0.jpg"
+                                         alt="{{ proyecto.nombre }}">
+                                </a>
+                            </div>
+                            <div class="card-box">
+                                <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                                    {{ proyecto.nombre }}
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="navigation d-flex justify-content-center mt-4">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets_admin/dropdown/js/script.min.js') }}"></script>
+{% endblock %}

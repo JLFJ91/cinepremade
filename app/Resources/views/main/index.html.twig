@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {% include 'main/blocks/stylesheets.html.twig' %}
+{% endblock %}
+
+{% block body %}
+
+    {% include 'main/blocks/slider.html.twig' with { 'slider': slider } %}
+    {% include 'main/blocks/que_hacemos.html.twig' with { 'pagina': pagina } %}
+    {% include 'main/blocks/features.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/ytplayer/jquery.mb.ytplayer.min.js') }}"></script>
+    <script src="{{ asset('assets/vimeoplayer/jquery.mb.vimeo_player.js') }}"></script>
+    <script src="{{ asset('assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js') }}"></script>
+    <script src="{{ asset('assets/slidervideo/script.js') }}"></script>
+{% endblock %}

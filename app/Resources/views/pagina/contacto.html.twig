@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - CONTACTO{% endblock %}
+
+{% block body %}
+    <section class="mbr-section form1 cid-qN1IGYQXvl mbr-parallax-background" id="form1-1k">
+        <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(35, 35, 35);"></div>
+        <div class="container">
+            {% for label, flashes in app.session.flashbag.all %}
+                {% for flash in flashes %}
+                    <div class="alert alert-{{ label }}">
+                        {{ flash }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <div class="row justify-content-center">
+                <div class="title col-12 col-lg-8">
+                    <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
+                        ¡Contacta con nosotros!
+                    </h2>
+                    <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
+                        Escríbenos para contarnos tus proyectos e ideas o si quieres más información de la asociación y formar parte de ella.
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="media-container-column col-lg-8">
+                    <div data-form-alert="" hidden="">
+                        Thanks for filling out the form!
+                    </div>
+                    {{ form_start(form, {'action': path('paginas_contacto')}) }}
+                    {{ form_widget(form) }}
+                    <span class="input-group-btn">
+                        <input type="submit" class="btn btn-primary btn-form display-4" value="¡Contacta!"/>
+                    </span>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/parallax/jarallax.min.js') }}"></script>
+    <script src="{{ asset('assets/formoid/formoid.min.js') }}"></script>
+{% endblock %}

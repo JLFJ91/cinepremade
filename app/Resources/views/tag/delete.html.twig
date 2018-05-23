@@ -1,0 +1,13 @@
+{% extends 'base_admin.html.twig' %}
+{% block body %}
+    {% include 'blocks/admin/header.html.twig' with {
+        'title': '¿Eliminar "' ~ tag.tag ~ '"?'
+        }
+    %}
+    <div class="container pl-4 pt-4 pb-5">
+        {{ form_start(delete_form) }}
+        {{ form_widget(delete_form) }}
+        <input type="submit" class="btn btn-primary" value="Eliminar" />
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}

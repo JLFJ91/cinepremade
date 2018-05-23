@@ -1,0 +1,23 @@
+<div class="team-item col-lg-3 col-md-6">
+    <div class="item-image">
+        <a href="{{ path('equipo_edit', {'id': equipo.id}) }}">
+            <img src="{{ asset(equipo_img_route ~ equipo.img) }}"
+                 alt="{{ equipo.nombre }} {{ equipo.apellidos }}">
+        </a>
+    </div>
+    <div class="item-caption py-3">
+        <div class="item-name px-2">
+            <p class="mbr-fonts-style display-5 text-center">
+                <a href="{{ path('equipo_edit', {'id': equipo.id}) }}">
+                    {{ equipo.nombre }} {{ equipo.apellidos }}
+                </a>
+            </p>
+        </div>
+        <div class="item-role px-2 text-center">
+            <p>{{ equipo.tipo }}</p>
+        </div>
+        <div class="item-social pt-2">
+            {% include 'equipo/blocks/social.html.twig' with {'equipo': equipo} %}
+        </div>
+    </div>
+</div>

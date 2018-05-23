@@ -1,0 +1,30 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}EQUIPO - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    {% include 'blocks/admin/header.html.twig' with {
+        'title': 'Equipo',
+        'addPath': path('equipo_new')
+        }
+    %}
+
+    <section class="features16 cid-qN729l9unr" id="features16-f">
+        <div class="container">
+            <div class="row media-row">
+                {% for equipo in pagination %}
+                    {% include 'equipo/blocks/equipo.html.twig' with {'equipo': equipo} %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="navigation d-flex justify-content-center mt-4">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/dropdown/js/script.min.js') }}"></script>
+{% endblock %}

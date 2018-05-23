@@ -1,0 +1,31 @@
+app_tag:
+    resource: "@AppBundle/Controller/TagController.php"
+    type:     annotation
+
+app_slider:
+    resource: "@AppBundle/Controller/SliderController.php"
+    type:     annotation
+
+app_proyecto:
+    resource: "@AppBundle/Controller/ProyectoController.php"
+    type:     annotation
+
+app_pagina:
+    resource: "@AppBundle/Controller/PaginaController.php"
+    type:     annotation
+
+app_equipo:
+    resource: "@AppBundle/Controller/EquipoController.php"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+artgris_bundle_file_manager:
+    resource: "@ArtgrisFileManagerBundle/Controller"
+    type:     annotation
+    prefix:   /admin/manager

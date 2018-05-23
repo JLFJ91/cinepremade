@@ -1,0 +1,28 @@
+<section class="mbr-section content4 cid-qN730RoGmm" id="content4-k">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-auto">
+                <h2 class="mbr-section-title mbr-fonts-style pb-3 display-2">
+                    {{ title }}
+                </h2>
+            </div>
+            <div class="col-auto">
+                {% if returnPath is defined %}
+                    <a href="{{ returnPath }}" class="btn btn-outline-info btn-sm">
+                        <span class="mbri-arrow-prev mbr-iconfont mbr-iconfont-btn"></span> Volver
+                    </a>
+                {% endif %}
+                {% if addPath is defined %}
+                    <a href="{{ addPath }}" class="btn btn-outline-primary btn-sm">
+                        <span class="mbri-plus mbr-iconfont mbr-iconfont-btn"></span> Nuevo
+                    </a>
+                {% endif %}
+                {% if deletePath is defined %}
+                    <a href="{{ deletePath }}" class="btn btn-outline-danger btn-sm">
+                        <span class="mbri-trash mbr-iconfont mbr-iconfont-btn"></span> Eliminar
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

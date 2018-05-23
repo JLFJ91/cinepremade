@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - EQUIPO{% endblock %}
+
+{% block body %}
+    <section class="testimonials1 cid-qN1BirgGxV mbr-parallax-background" id="testimonials1-w">
+        <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(35, 35, 35);">
+        </div>
+        <div class="container">
+            <div class="media-container-row">
+                <div class="title col-12 align-center">
+                    <h2 class="pb-3 mbr-fonts-style display-2">
+                        FUNDADORES</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="container pt-3 mt-2">
+            <div class="media-container-row">
+                {% for fundador in fundadores %}
+                    {% include 'equipo/blocks/fundador.html.twig' with {'fundador': fundador} %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="features16 cid-qN1C0Yle4r" id="features16-x">
+        <div class="container align-center">
+            <h2 class="pb-5 mbr-fonts-style mbr-section-title display-2">
+                NUESTROS SOCIOS
+            </h2>
+        </div>
+        <!--<div class="container mb-4">
+            {% include 'buscador/buscador.html.twig' with {'buscadorForm': buscadorForm} %}
+        </div>-->
+        <div class="container align-center">
+            <div class="row media-row">
+                {% for socio in pagination %}
+                    {% include 'equipo/blocks/socio.html.twig' with {'socio': socio} %}
+                {% endfor %}
+            </div>
+
+            <div class="navigation d-flex justify-content-center mt-4">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/parallax/jarallax.min.js') }}"></script>
+{% endblock %}
