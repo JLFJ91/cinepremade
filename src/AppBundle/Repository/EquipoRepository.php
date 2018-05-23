@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class EquipoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByTipo($tipo) {
+        return $this->createQueryBuilder('e')
+            ->where('e.tipo = :tipo')
+            ->orderBy('e.nombre', 'ASC')
+            ->setParameter('tipo', $tipo)
+            ->getQuery()
+            ->getResult();
+    }
 }

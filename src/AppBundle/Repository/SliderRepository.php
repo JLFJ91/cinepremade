@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class SliderRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllOrderById($maxResults = 3) {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.id', 'DESC')
+            ->setMaxResults($maxResults)
+            ->getQuery()
+            ->getResult();
+    }
 }

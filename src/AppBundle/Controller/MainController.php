@@ -17,7 +17,7 @@ class MainController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $slider = $em->getRepository('AppBundle:Slider')->findBy([], ['id' => 'DESC'], 3);
+        $slider = $em->getRepository('AppBundle:Slider')->findAllOrderById();
         $paginas = $em->getRepository('AppBundle:Pagina')->findPublicPaginasOrderByPosicion();
 
         return $this->render('main/index.html.twig', [

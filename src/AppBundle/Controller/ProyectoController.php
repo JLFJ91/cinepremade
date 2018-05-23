@@ -24,8 +24,8 @@ class ProyectoController extends Controller
 
         $paginator = $this->get('knp_paginator');
 
-        $ultimoProyecto = $em->getRepository('AppBundle:Proyecto')->findBy([], ['createdAt' => 'DESC'], 1);
-        $proyectos = $em->getRepository('AppBundle:Proyecto')->findBy([], ['createdAt' => 'DESC']);
+        $ultimoProyecto = $em->getRepository('AppBundle:Proyecto')->findLast();
+        $proyectos = $em->getRepository('AppBundle:Proyecto')->findAllOrderByCreatedAt();
         $pagination = $paginator->paginate(
             $proyectos,
             $request->query->getInt('page', 1),

@@ -26,20 +26,17 @@ class EquipoController extends Controller
         $paginator = $this->get('knp_paginator');
 
 
-        $fundadores = $em->getRepository('AppBundle:Equipo')->findBy(['tipo' => 'fundador'], ['nombre' => 'ASC'], 3);
-        $socios = $em->getRepository('AppBundle:Equipo')->findBy(['tipo' => 'socio'], ['nombre' => 'ASC']);
+        $fundadores = $em->getRepository('AppBundle:Equipo')->findByTipo('fundador');
+        $socios = $em->getRepository('AppBundle:Equipo')->findByTipo('socio');
         $pagination = $paginator->paginate(
             $socios,
             $request->query->getInt('page', 1),
             8
         );
 
-        $buscadorForm = $this->createForm('AppBundle\Form\BuscadorType');
-
         return $this->render('equipo/index.html.twig', array(
             'fundadores' => $fundadores,
             'pagination' => $pagination,
-            'buscadorForm' => $buscadorForm->createView(),
         ));
     }
     

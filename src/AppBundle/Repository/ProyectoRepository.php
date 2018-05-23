@@ -10,4 +10,18 @@ namespace AppBundle\Repository;
  */
 class ProyectoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLast() {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllOrderByCreatedAt() {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }
