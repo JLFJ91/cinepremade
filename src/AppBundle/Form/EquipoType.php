@@ -26,6 +26,7 @@ class EquipoType extends AbstractType
             ->add('email')
             ->add('facebook')
             ->add('instagram')
+            ->add('linkedin')
             ->add('twitter')
             ->add('youtube')
             ->add('tipo', ChoiceType::class, [
