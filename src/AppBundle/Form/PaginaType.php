@@ -13,7 +13,7 @@ class PaginaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titulo')->add('contenido');
+        $builder->add('titulo')->add('contenido')->add('posicion');
     }/**
      * {@inheritdoc}
      */

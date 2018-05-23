@@ -18,11 +18,11 @@ class MainController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $slider = $em->getRepository('AppBundle:Slider')->findBy([], ['id' => 'DESC'], 3);
-        $pagina = $em->getRepository('AppBundle:Pagina')->find(Pagina::$PAGINA_QUE_HACEMOS);
+        $paginas = $em->getRepository('AppBundle:Pagina')->findPublicPaginasOrderByPosicion();
 
         return $this->render('main/index.html.twig', [
             'slider' => $slider,
-            'pagina' => $pagina,
+            'paginas' => $paginas,
         ]);
     }
 

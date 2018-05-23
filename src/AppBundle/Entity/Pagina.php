@@ -40,6 +40,13 @@ class Pagina
     private $contenido;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="posicion", type="integer")
+     */
+    private $posicion = 0;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -103,6 +110,30 @@ class Pagina
     public function getContenido()
     {
         return $this->contenido;
+    }
+
+    /**
+     * Set posicion
+     *
+     * @param string $posicion
+     *
+     * @return Pagina
+     */
+    public function setPosicion($posicion)
+    {
+        $this->posicion = $posicion;
+
+        return $this;
+    }
+
+    /**
+     * Get posicion
+     *
+     * @return integer
+     */
+    public function getPosicion()
+    {
+        return $this->posicion;
     }
 
     /**

@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class PaginaRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findPublicPaginasOrderByPosicion() {
+        return $this->createQueryBuilder('p')
+            ->where('p.posicion > :posicion')
+            ->orderBy('p.posicion', 'ASC')
+            ->setParameter('posicion', 0)
+            ->getQuery()
+            ->getResult();
+    }
 }
