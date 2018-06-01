@@ -1,20 +1,20 @@
-<div class="team-item col-lg-4 col-md-6">
+<div class="team-item col-lg-3 col-md-6">
     <div class="item-image">
-        <img src="{{ asset(equipo_img_route ~ fundador.img) }}">
+        <img src="{{ asset(equipo_img_route ~ socio.img) }}">
     </div>
     <div class="item-caption py-3">
         <div class="item-name px-2">
             <p class="mbr-fonts-style display-5">
-                {{ fundador.nombre }} {{ fundador.apellidos }}
+                {{ socio.nombre }} {{ socio.apellidos }}
             </p>
         </div>
         <div class="item-role px-2">
             <p>
-                {% include 'equipo/blocks/tags.html.twig' with {'tags': fundador.tags} %}
+                {% include 'equipo/blocks/tags.html.twig' with {'tags': socio.tags} %}
             </p>
         </div>
         <div class="item-social pt-2">
-            {% include 'equipo/blocks/social.html.twig' with {'equipo': fundador} %}
+            {% include 'equipo/blocks/social.html.twig' with {'equipo': socio} %}
         </div>
     </div>
 </div>

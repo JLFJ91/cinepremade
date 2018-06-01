@@ -3,7 +3,7 @@
 {% block title %}{{ parent() }} - EQUIPO{% endblock %}
 
 {% block body %}
-    <section class="testimonials1 cid-qN1BirgGxV mbr-parallax-background" id="testimonials1-w">
+    <section class="testimonials1 cid-qN1BirgGxV cid-qN1C0Yle4r mbr-parallax-background" id="testimonials1-w">
         <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(35, 35, 35);">
         </div>
         <div class="container">
@@ -15,8 +15,8 @@
             </div>
         </div>
 
-        <div class="container pt-3 mt-2">
-            <div class="media-container-row">
+        <div class="container align-center pt-3 mt-2">
+            <div class="row media-row">
                 {% for fundador in fundadores %}
                     {% include 'equipo/blocks/fundador.html.twig' with {'fundador': fundador} %}
                 {% endfor %}
