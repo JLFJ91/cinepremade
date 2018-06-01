@@ -1,11 +1,24 @@
 <div class="mbr-gallery-item mbr-gallery-item--p2 video-slide"
-     data-video-url="https://www.youtube.com/watch?v={{ proyecto.url }}">
+     data-video-url="https://www.youtube.com/watch?v={{ proyecto.url }}"
+     data-toggle="popover"
+     data-placement="top"
+     data-trigger="hover"
+     data-popover-content="#popover{{ proyecto.id }}"
+>
     <div href="#lb-gallery1-19" data-slide-to="{{ id }}" data-toggle="modal">
         <div></div>
         <img alt="" src="https://img.youtube.com/vi/{{ proyecto.url }}/0.jpg">
         <i class="far fa-play-circle icon-video"></i>
-        <span class="mbr-gallery-title mbr-fonts-style display-7">
+        <!--<span class="mbr-gallery-title mbr-fonts-style display-7">
             {{ proyecto.nombre }}
-        </span>
+        </span>-->
     </div>
+    <div id="popover{{ proyecto.id }}" class="d-none">
+        <div class="popover-heading">{{ proyecto.nombre }}</div>
+        <div class="popover-body">
+            <div class="mb-3">{{ proyecto.descripcion }}</div>
+            <div>{% include 'equipo/blocks/tags.html.twig' with {'tags': proyecto.equipos} %}</div>
+        </div>
+    </div>
+
 </div>

@@ -18,6 +18,7 @@ class ProyectoType extends AbstractType
         $builder->add('nombre')
             ->add('img')
             ->add('url')
+            ->add('descripcion')
             ->add('equipos', EntityType::class, [
                 'class' => 'AppBundle:Equipo',
                 'query_builder' => function(EntityRepository $er) {

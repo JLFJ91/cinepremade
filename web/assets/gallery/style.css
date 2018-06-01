@@ -143,11 +143,7 @@
   z-index: 5;
   -webkit-transition: opacity .3s ease;
   -moz-transition: opacity .3s ease;
-  -o-transition: opacity .3s ease;
-  transition: opacity .3s ease;
-  font-family: 'MobiriseIcons'; }
-  .mbr-gallery .modal .close::before {
-    content: '\e91a'; }
+  -o-transition: opacity .3s ease;}
 
 .mbr-gallery .modal .close:hover {
   opacity: 1;
