@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipo;
+use AppBundle\Form\BuscadorType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +18,7 @@ class EquipoController extends Controller
      * Lists all equipo entities.
      *
      * @Route("equipo/", name="equipo_index")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
     public function indexAction(Request $request)
     {
@@ -25,9 +26,26 @@ class EquipoController extends Controller
 
         $paginator = $this->get('knp_paginator');
 
-
         $fundadores = $em->getRepository('AppBundle:Equipo')->findByTipo('fundador');
-        $socios = $em->getRepository('AppBundle:Equipo')->findByTipo('socio');
+
+        $form = $this->createForm('AppBundle\Form\BuscadorType');
+
+        $tag = '';
+
+        if($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid() && $form->get('tag')->getData()) {
+                $tag = $form->get('tag')->getData();
+                $socios = $em->getRepository('AppBundle:Equipo')->findByTag($form->get('tag')->getData());
+            }
+            else {
+                $socios = $em->getRepository('AppBundle:Equipo')->findByTipo('socio');
+            }
+        }
+        else {
+            $socios = $em->getRepository('AppBundle:Equipo')->findByTipo('socio');
+        }
+
         $pagination = $paginator->paginate(
             $socios,
             $request->query->getInt('page', 1),
@@ -37,6 +55,8 @@ class EquipoController extends Controller
         return $this->render('equipo/index.html.twig', array(
             'fundadores' => $fundadores,
             'pagination' => $pagination,
+            'buscadorForm' => $form->createView(),
+            'categoria' => $tag,
         ));
     }
     

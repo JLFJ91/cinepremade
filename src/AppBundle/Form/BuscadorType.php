@@ -16,14 +16,15 @@ class BuscadorType extends AbstractType
             ->add('tag', EntityType::class, [
                 'class' => 'AppBundle:Tag',
                 'label' => 'Filtrar socios por Categoría',
-
+                'label_attr' => ['class' => 'h5 mb-3'],
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('t')
                         ->orderBy('t.tag', 'ASC');
                 },
                 'required' => true,
-                'placeholder' => 'Selecciona una categoría...',
+                'placeholder' => 'Selecciona todos...',
                 'choice_label' => 'tag',
+                'required' => false
             ]);
     }
 

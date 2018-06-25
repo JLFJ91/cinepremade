@@ -18,4 +18,13 @@ class EquipoRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findByTag($tag) {
+        return $this->createQueryBuilder('e')
+            ->innerJoin('e.tags', 't')
+            ->where('t.id = :tag')
+            ->setParameter('tag', $tag)
+            ->getQuery()
+            ->getResult();
+    }
 }

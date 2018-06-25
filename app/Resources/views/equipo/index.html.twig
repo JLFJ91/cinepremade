@@ -29,11 +29,23 @@
                 NUESTROS SOCIOS
             </h2>
         </div>
+        <div class="container mb-4">
+            {% include 'buscador/buscador.html.twig' with {'buscadorForm': buscadorForm} %}
+        </div>
         <div class="container align-center">
             <div class="row media-row">
-                {% for socio in pagination %}
-                    {% include 'equipo/blocks/socio.html.twig' with {'socio': socio} %}
-                {% endfor %}
+                {% if pagination is not empty %}
+                    {% if categoria is not empty %}
+                        <div class="col-12 mb-3">
+                            <h4>Filtrado por : <strong>({{ categoria }})</strong></h4>
+                        </div>
+                    {% endif %}
+                    {% for socio in pagination %}
+                        {% include 'equipo/blocks/socio.html.twig' with {'socio': socio} %}
+                    {% endfor %}
+                {% else %}
+                    <h3>¡¡Upppps, No tenemos socios de esa categoria!!</h3>
+                {% endif %}
             </div>
 
             <div class="navigation d-flex justify-content-center mt-4">

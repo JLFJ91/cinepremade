@@ -278,6 +278,11 @@ nav .mbr-section-btn {
   top: -2px;
   font-weight: normal; }
 
+select.form-control {
+  height: 2.6rem;
+  min-height: 2.6rem;
+}
+
 /*! Scroll to top arrow */
 .mbr-arrow-up {
   bottom: 25px;
